@@ -116,8 +116,13 @@ add_action( 'widgets_init', 'atareao_201709_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
+add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 function atareao_201709_scripts() {
+    // CSS
 	wp_enqueue_style( 'atareao_201709-style', get_stylesheet_uri() );
+    // Google Fonts
+    // wp_enqueue_style( 'wpb-google-fonts', 'http://fonts.googleapis.com/css?family=Roboto', false ); 
 
 	wp_enqueue_script( 'atareao_201709-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -149,9 +154,172 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+require get_template_directory() . '/inc/atareao-basico.php';
+
+require get_template_directory() . '/inc/atareao-extras.php';
+
 /**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+function atareao_theme_v2_get_first_image_from_post($post_id, $width, $height) {
+    if ( has_post_thumbnail($post_id)) {
+        $first_img = get_the_post_thumbnail($post_id);
+    }else{
+        $first_img = '';
+        $post_content = get_post_field('post_content', $post_id);
+        $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post_content, $matches);
+        if(count($matches [1])){
+            $first_img = $matches[1][0];
+        }
+        if(strpos($first_img,'/s288/')!=FALSE){
+            $first_img = str_replace('/s288/','/s100/',$first_img);
+        }
+    }
+    $title = get_the_title($post_id);
+    if(($first_img)and(!empty($first_img))){
+        return '<img class="atareao_theme_v2-img" src="'.$first_img.'" alt="'.$title.'" title="'.$title.'"/>';
+    }else{
+        $first_img = get_template_directory_uri ()."/images/no_image.png";
+        return '<img class="atareao_theme_v2-img" src="'.$first_img.'" alt="'.$title.'" title="'.$title.'"/>';
+    }
+}
+function atareao_theme_v2_posted_on_sv(){
+    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+    $time_string_publicado = sprintf( $time_string,
+        esc_attr( get_the_date( 'c' ) ),
+        esc_html( get_the_date('j \d\e F \d\e Y') )
+    );
+    $count = atareao_theme_v2_getPostViews_short();
+    if($count > 0){
+        printf( __( '<span class="icono16 calendario"></span>  <span class="posted-on-info">%1$s</span>  <span class="icono16 ojo"></span>  <span class="posted-on-info">%2$s</span>', 'atareao_theme_v2' ),
+            sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
+                esc_url( get_permalink() ),
+                $time_string_publicado
+            ),
+            sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
+                esc_url( get_permalink() ),
+                atareao_theme_v2_getPostViews_short()
+            )
+        );
+    }else{
+        printf( __( '<span class="icono16 calendario"></span>  <span class="posted-on-info">%1$s</span>', 'atareao_theme_v2' ),
+            sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
+                esc_url( get_permalink() ),
+                $time_string_publicado
+            )
+        );
+    }
+}
+/**
+ * My own pagination
+ */
+function atareao_theme_pagination($currentpage = '', $pages = '', $range = 2){
+     $showitems = ($range * 2)+1;
+     global $paged;
+     if($currentpage != ''){
+         $paged = $currentpage;
+     }
+     if(empty($paged)) $paged = 1;
+     if($pages == ''){
+         global $wp_query;
+         $pages = $wp_query->max_num_pages;
+         if(!$pages){
+             $pages = 1;
+         }
+     }
+     if(1 != $pages){
+         echo "<nav class='paging-navigation xs-twelve columns' role='navigation'>\n";
+         echo "<div class='pagination'>";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."' title='Página 1'>&laquo;</a>";
+         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."' title='Página ".($paged - 1)."'>&lsaquo;</a>";
+         for ($i=1; $i <= $pages; $i++){
+             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )){
+                 echo ($paged == $i)? "<span class='current'>Página ".$i." de ".$pages."</span>":"<a href='".get_pagenum_link($i)."' title='Página ".($i)."' class='inactive' >".$i."</a>";
+             }
+         }
+         if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."' title='Página ".($paged + 1)."'>&rsaquo;</a>";
+         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."' title='Página ".($pages)."'>&raquo;</a>";
+         echo "</div>\n";
+         echo "</nav>\n";
+     }
+}
+add_filter( 'get_search_form', 'atareao_search_form', 100 );
+function atareao_search_form( $form ) {
+    $form = '<form role="search" method="get" action="' . home_url( '/' ) . '" >
+    <span class="screen-reader-text" for="s">' . _x( 'Search for:', 'label' ) . '</span>
+    <input type="search" class="search-icon" value="' . get_search_query() . '" name="s" placeholder='.esc_attr_x( 'Buscar …', 'placeholder' ).' title="'.esc_attr_x( 'Search for:', 'label' ).'"/>
+    <input class="u-hide" type="submit" id="searchsubmit" value="'. esc_attr__( 'Search' ) .'" />
+    </form>';
+    return $form;
+}
+function atareao_theme_v2_getPostViews_short(){
+    $postID = get_the_ID();
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        $count = 0;
+    }
+    return $count;
+}
+function atareao_theme_v2_getPostViews(){
+    $postID = get_the_ID();
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        $count = 0;
+    }
+    if ($count == 0){
+        $count = 'Eres el <strong>primero</strong> en leer este artículo.';
+    }elseif($count == 1) {
+        $count = 'Eres el <strong>segundo</strong> en leer este artículo.';
+    }elseif(($count > 1) &&($count < 1000)){
+        $count = 'Este artículo se ha leído <strong>'.$count.'</strong> veces.';
+    }elseif (($count > 999) &&($count < 1000000)){
+        $count = 'Este artículo se ha leído <strong>'.round($count /1000,1).'K</strong> veces.';
+    }elseif (($count > 999999) &&($count < 1000000000)){
+        $count = 'Este artículo se ha leído <strong>'.round($count /1000000,1).'M</strong> veces.';
+    }else{
+        $count = 'Este artículo se ha leído <strong>'.round($count /1000000000,1).'T</strong> veces.';
+    }
+    return $count;
+}
+add_action('template_redirect', 'atareao_theme_v2_setPostViews');
+function atareao_theme_v2_setPostViews() {
+    $user = wp_get_current_user();
+    $allowed_roles = array('editor', 'administrator', 'author');
+    if(!array_intersect($allowed_roles, $user->roles)){
+        $postID = get_the_ID();
+        $count_key = 'post_views_count';
+        $count = get_post_meta($postID, $count_key, true);
+        if($count==''){
+            $count = 0;
+            delete_post_meta($postID, $count_key);
+            add_post_meta($postID, $count_key, '0');
+        }else{
+            $count++;
+            update_post_meta($postID, $count_key, $count);
+        }
+    }
+}
+function social_media_links(){
+    $url = get_permalink();
+    $encode_url = urlencode($url);
+    $title = esc_attr(get_the_title());
+    $window = 'onclick="javascript:var left = (screen.width/2)-(600/2);var top = (screen.height/2)-(300/2);window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600,left=\'+left+\',top=\'+top+\'\');return false;"';
+    $facebook_link = '<a href="https://www.facebook.com/sharer/sharer.php?u='.$encode_url.'&t='.$title.'" data-share-url="'.$url.'" '.$window.'
+    target="_blank" title="Compartir en Facebook" class="circle for-social-media-link facebook bgc-facebook hvr-pulse"><span class="symbol facebook-white"></span></a>';
+    $twitter_link='<a href="https://twitter.com/intent/tweet/?url='.$encode_url.'&via=atareao&text='.$title.'"'.$window.'
+    target="_blank" title="Compartir en Twitter" class="circle for-social-media-link twitter bgc-twitter hvr-pulse"><span class="symbol twitter-white"></span></a>';
+    $google_plus_link = '<a href="https://plus.google.com/share?url='.$encode_url.'"'.$window.'
+    target="_blank" title="Compartir en Google+" class="circle for-social-media-link google-plus bgc-google-plus hvr-pulse"><span class="symbol google-plus-white"></span></a>';
+    $sml = '<div class=social-medial-links>'.$facebook_link.' '.$twitter_link.' '.$google_plus_link.'</div>'; 
+    echo $sml;
 }

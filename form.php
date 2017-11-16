@@ -5,6 +5,9 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package atareao_201709
+ *
+ * Template Name: form
+ * 
  */
 
 get_header(); ?>
@@ -13,10 +16,6 @@ get_header(); ?>
 		<main id="main" class="site-main">
 
 		<?php
-        if ((get_post_type()=='post')||(get_post_type()=='software')){
-            category_menu();
-            software_menu();
-        }
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -39,10 +38,14 @@ get_header(); ?>
 
 			endwhile;
 
-			atareao_theme_pagination();
+			the_posts_navigation();
+
 		else :
+
 			get_template_part( 'template-parts/content', 'none' );
+
 		endif; ?>
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

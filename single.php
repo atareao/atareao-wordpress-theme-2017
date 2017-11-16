@@ -13,6 +13,10 @@ get_header(); ?>
 		<main id="main" class="site-main">
 
 		<?php
+        if ((get_post_type()=='post')||(get_post_type()=='software')){
+            category_menu();
+            software_menu();
+        }
 		while ( have_posts() ) : the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );

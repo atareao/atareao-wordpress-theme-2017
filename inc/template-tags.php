@@ -12,32 +12,51 @@ if ( ! function_exists( 'atareao_201709_posted_on' ) ) :
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
 	function atareao_201709_posted_on() {
-		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-		}
+	    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	    $time_string_publicado = sprintf( $time_string,
+	        esc_attr( get_the_date( 'c' ) ),
+	        esc_html( get_the_date('l\, j \d\e F \d\e Y') )
+	    );
+	    if (strtotime(get_the_modified_date('Y-m-d')) > strtotime(get_the_date('Y-m-d'))){
+	        $time_string_actualizado = sprintf( $time_string,
+	            esc_attr( get_the_modified_date( 'c' ) ),
+	            esc_html( get_the_modified_date('l\, j \d\e F \d\e Y') )
+	        );
+	        printf( __( '<i><span class="posted-on">Publicado el %1$s. </span><strong><span class="posted-on">Actualizado el %2$s</span></strong><span class="byline"> por %3$s</span>. %4$s</i>', 'atareao_theme_v2' ),
+	            sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
+	                esc_url( get_permalink() ),
+	                $time_string_publicado
+	            ),
+	            sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
+	                esc_url( get_permalink() ),
+	                $time_string_actualizado
+	            ),
+	            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
+	                esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+	                esc_html( get_the_author() )
+	            ),
+	            atareao_theme_v2_getPostViews()
+	        );
 
-		$time_string = sprintf( $time_string,
-			esc_attr( get_the_date( 'c' ) ),
-			esc_html( get_the_date() ),
-			esc_attr( get_the_modified_date( 'c' ) ),
-			esc_html( get_the_modified_date() )
-		);
-
-		$posted_on = sprintf(
-			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'atareao_201709' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
-
-		$byline = sprintf(
-			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'atareao_201709' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-		);
-
-		echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
+	    }else{
+	        printf( __( '<i><span class="posted-on">Publicado el %1$s</span><span class="byline"> por %2$s</span>. %3$s</i>', 'atareao_theme_v2' ),
+	            sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
+	                esc_url( get_permalink() ),
+	                $time_string_publicado
+	            ),
+	            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
+	                esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+	                esc_html( get_the_author() )
+	            ),
+	            atareao_theme_v2_getPostViews()
+	        );
+	    }
+	    if ( is_single() ) {
+	        echo ' <a href="'.get_the_permalink().'#disqus_thread">Deja un comentario</a>';
+	        if (time() - max(strtotime(get_the_date('Y-m-d')), strtotime(get_the_modified_date('Y-m-d'))) > (365 * 24 * 3600)) {
+				echo "<div class='information danger'><p><span class='icono24 atencion'></span>Este artículo se publicó hace <strong>mas de un año</strong>. Ten en cuenta que con las nuevas versiones y las actualizaciones constantes de software, es fácil, que este <strong>artículo</strong> esté <strong>desactualizado</strong>. Si estás interesado en que lo <strong>actualice</strong>, envíame un correo a través del <a href=''>formulario de contacto</a>.</p></div>";
+	    	}
+	    }
 	}
 endif;
 
