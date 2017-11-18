@@ -24,12 +24,12 @@
 
 			<div class="social-links">
                 <ul>
-                    <li><a href="http://www.facebook.com/elatareao" title="El atareao en Facebook" rollapp-href="http://www.facebook.com/elatareao"><span class="icono24 facebook"></span></span>Facebook</a></li>
-                    <li><a href="http://twitter.com/atareao" title="El atareao en Twitter" rollapp-href="http://twitter.com/atareao"><span class="icono24 twitter"></span>Twitter</a></li>
-                    <li><a href="https://plus.google.com/+AtareaoEs/posts" title="El atareao en Google+" rollapp-href="https://plus.google.com/+AtareaoEs/posts"><span class="icono24 google-plus"></span>Google+</a></li>
-                    <li><a href="https://github.com/atareao" title="El atareao en GitHub" rollapp-href="https://github.com/atareao"><span class="icono24 github"></span>GitHub</a></li>
+                    <li><a href="http://www.facebook.com/elatareao" title="El atareao en Facebook" rollapp-href="http://www.facebook.com/elatareao"><span class="icono24 facebook-icon for-colophon"></span></span>Facebook</a></li>
+                    <li><a href="http://twitter.com/atareao" title="El atareao en Twitter" rollapp-href="http://twitter.com/atareao"><span class="icono24 twitter-icon for-colophon"></span>Twitter</a></li>
+                    <li><a href="https://plus.google.com/+AtareaoEs/posts" title="El atareao en Google+" rollapp-href="https://plus.google.com/+AtareaoEs/posts"><span class="icono24 google-plus-icon for-colophon"></span>Google+</a></li>
+                    <li><a href="https://github.com/atareao" title="El atareao en GitHub" rollapp-href="https://github.com/atareao"><span class="icono24 github-icon for-colophon"></span>GitHub</a></li>
                     <li><a href="http://www.youtube.com/user/atareao" title="El atareao en YouTube" rollapp-href="http://www.youtube.com/user/atareao"><span class="icono24
-                     youtube"></span>YouTube</a></li>
+                     youtube-icon for-colophon"></span>YouTube</a></li>
                 </ul>
             </div>
 			<div class="contact">
@@ -38,9 +38,9 @@
                     <li><a href="./feed/" title="Las RSS de El atareao" rollapp-href="http://www.atareao.es/feed/"><span class="symbol rss-white"></span>RSS</a></li>
                     <li><a href="https://feedburner.google.com/fb/a/mailverify?uri=Atareao&amp;loc=es_ES" title="Suscríbete por correo" rollapp-href="https://feedburner.google.com/fb/a/mailverify?uri=Atareao&amp;loc=es_ES"><span class="symbol mail-white"></span>RSS by eMail</a></li>
                     -->
-                    <li><a href="/suscribir/" title="Suscribirse" rollapp-href="http://www.atareao.es/suscribir/"><span class="icono24 pagina"></span>Suscribir</a></li>
-                    <li><a href="/contactar/" title="Contacto" rollapp-href="http://www.atareao.es/contactar/"><span class="icono24 email"></span>Contactar</a></li>
-                    <li><a href="/quien-soy/" title="Quien soy..." rollapp-href="http://www.atareao.es/quien-soy/"><span class="icono24 info"></span>Quien soy</a></li>
+                    <li><a href="/suscribir/" title="Suscribirse" rollapp-href="http://www.atareao.es/suscribir/"><span class="icono24 pagina-icon for-colophon"></span>Suscribir</a></li>
+                    <li><a href="/contactar/" title="Contacto" rollapp-href="http://www.atareao.es/contactar/"><span class="icono24 email-icon for-colophon"></span>Contactar</a></li>
+                    <li><a href="/quien-soy/" title="Quien soy..." rollapp-href="http://www.atareao.es/quien-soy/"><span class="icono24 info-icon for-colophon"></span>Quien soy</a></li>
                 </ul>
             </div>
 		</div>

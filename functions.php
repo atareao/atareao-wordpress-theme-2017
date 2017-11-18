@@ -116,21 +116,34 @@ add_action( 'widgets_init', 'atareao_201709_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
-
-add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+function my_init() {
+    if (!is_admin()) {
+        wp_deregister_script('jquery'); 
+        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', false, '3.2.1'); 
+        wp_enqueue_script('jquery');
+    }
+}
+//add_action('init', 'my_init');
 function atareao_201709_scripts() {
     // CSS
 	wp_enqueue_style( 'atareao_201709-style', get_stylesheet_uri() );
     // Google Fonts
     // wp_enqueue_style( 'wpb-google-fonts', 'http://fonts.googleapis.com/css?family=Roboto', false ); 
+    //wp_deregister_script('jquery');
+    //wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true);
+    wp_enqueue_script('atareao_theme_v2_atareaojs', get_template_directory_uri() . '/js/atareao.js', array('jquery'), null, true );
 
-	wp_enqueue_script( 'atareao_201709-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'atareao_201709-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+            wp_enqueue_script( 'comment-reply' );
+    }
+    if (is_page('donar')){
+        wp_enqueue_script('blockchain', "https://blockchain.info/Resources/wallet-legacy/pay-now-button.js", array('jquery'), '201606', true );
+    }
+    if (is_page('radio-linux')){
+        wp_enqueue_script('player', get_template_directory_uri() . '/js/player.js', array('jquery'), '201706', true );
+        wp_enqueue_style('radio-style',  get_template_directory_uri() . '/radio-style.css', array(),'201706');
+        wp_enqueue_style('atareao_theme_v2-awesome-font', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+    }
 }
 add_action( 'wp_enqueue_scripts', 'atareao_201709_scripts' );
 
@@ -195,7 +208,7 @@ function atareao_theme_v2_posted_on_sv(){
     );
     $count = atareao_theme_v2_getPostViews_short();
     if($count > 0){
-        printf( __( '<span class="icono16 calendario"></span>  <span class="posted-on-info">%1$s</span>  <span class="icono16 ojo"></span>  <span class="posted-on-info">%2$s</span>', 'atareao_theme_v2' ),
+        printf( __( '<span class="icono16 calendario-icon"></span>  <span class="posted-on-info">%1$s</span>  <span class="icono16 ojo-icon"></span>  <span class="posted-on-info">%2$s</span>', 'atareao_theme_v2' ),
             sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
                 esc_url( get_permalink() ),
                 $time_string_publicado
@@ -206,7 +219,7 @@ function atareao_theme_v2_posted_on_sv(){
             )
         );
     }else{
-        printf( __( '<span class="icono16 calendario"></span>  <span class="posted-on-info">%1$s</span>', 'atareao_theme_v2' ),
+        printf( __( '<span class="icono16 calendario-icon"></span>  <span class="posted-on-info">%1$s</span>', 'atareao_theme_v2' ),
             sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
                 esc_url( get_permalink() ),
                 $time_string_publicado
@@ -315,11 +328,11 @@ function social_media_links(){
     $title = esc_attr(get_the_title());
     $window = 'onclick="javascript:var left = (screen.width/2)-(600/2);var top = (screen.height/2)-(300/2);window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600,left=\'+left+\',top=\'+top+\'\');return false;"';
     $facebook_link = '<a href="https://www.facebook.com/sharer/sharer.php?u='.$encode_url.'&t='.$title.'" data-share-url="'.$url.'" '.$window.'
-    target="_blank" title="Compartir en Facebook" class="circle for-social-media-link facebook bgc-facebook hvr-pulse"><span class="symbol facebook-white"></span></a>';
+    target="_blank" title="Compartir en Facebook" class="circle for-social-media-link facebook-icon bgc-facebook hvr-pulse"><span class="symbol facebook-white"></span></a>';
     $twitter_link='<a href="https://twitter.com/intent/tweet/?url='.$encode_url.'&via=atareao&text='.$title.'"'.$window.'
-    target="_blank" title="Compartir en Twitter" class="circle for-social-media-link twitter bgc-twitter hvr-pulse"><span class="symbol twitter-white"></span></a>';
+    target="_blank" title="Compartir en Twitter" class="circle for-social-media-link twitter-icon bgc-twitter hvr-pulse"><span class="symbol twitter-white"></span></a>';
     $google_plus_link = '<a href="https://plus.google.com/share?url='.$encode_url.'"'.$window.'
-    target="_blank" title="Compartir en Google+" class="circle for-social-media-link google-plus bgc-google-plus hvr-pulse"><span class="symbol google-plus-white"></span></a>';
+    target="_blank" title="Compartir en Google+" class="circle for-social-media-link google-plus-icon bgc-google-plus hvr-pulse"><span class="symbol google-plus-white"></span></a>';
     $sml = '<div class=social-medial-links>'.$facebook_link.' '.$twitter_link.' '.$google_plus_link.'</div>'; 
     echo $sml;
 }
