@@ -1,0 +1,102 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$font-family: 'Roboto', sans-serif !default;
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+/// Gutter space
+/// @type Length
+$gutter: 1rem;
+
+/// Grid variables
+/// Container's maximum width
+/// @type Length
+$container-width: 1200px !default;
+$container-width-larger-than-mobile: 85% !default;
+$container-width-larger-than-phablet: 80% !default;
+$total-columns: 4 !default;
+$column-width: 100% / $total-columns !default; // calculates individual column width based off of # of columns
+$column-margin: 4% !default; // space between columns
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  'extra-small': 25rem, //  400px - mobile
+  'small':       35rem, //  560px - phablet
+  'medium':      45rem, //  720px - tablet
+  'large':       60rem, //  960px - desktop
+  'extra-large': 75rem  // 1200px - desktophd
+) !default;
+
+$title-size: 1.3rem;
+/// Colors
+$background-color: #f8f8f8 !default;
+$header-background-color: #fff !default;
+
+$link-color: #dd4814 !default;
+$inverted-link-color: #24B6EB !default;
+$link-color-visited:#77216F !default;
+
+$text-color: #555 !default;
+$title-color: #111 !default;
+
+$button-background-color: #3498db;
+$button-background-color-enter: #dd4814;
+$button-background-color-active: #222;
+$button-background-color-disabled: #888;
+
+$form-background-color: #fbfbfb;
+$form-background-color-focus: #fff;
+$form-font-color: #3c3c3c;
+$form-font-color-focus: #000000;
+
+$code-background: #F1F1F1;
+
+$alert-font-color: #000;
+$alert-background-color: #FFF;
+$alert-primary-font-color: #FFF;
+$alert-primary-background-color: #33C3F0;
+$alert-success-font-color: #FFF;
+$alert-success-background-color: #2ecc71;
+$alert-danger-font-color: #FFF;
+$alert-danger-background-color: #e74c3c;
+
+/// Borders
+$border-radius: 4px !default;
+
+$button-border: 1px solid #BBB;
+$button-border-disabled: 1px solid #E3E3E3;
+
+$primary-button-border: 1px solid #33C3F0;
+$success-button-border: 1px solid #2ecc71;
+$danger-button-border: 1px solid #e74c3c;
+
+$form-border: 1px solid #aaaaaa;
+$form-border-focus: 1px solid #3498db;
+$form-border-enter: 1px solid #33C3F0;
+$form-border-enter-error: 1px solid #e74c3c;
+$form-border-enter-success: 1px solid #2ecc71;
+
+$code-border: 1px solid #aaaaaa;
+
+$alert-border: 1px solid #000;
+$alert-primary-border: 1px solid #33C3F0;
+$alert-success-border: 1px solid #2ecc71;
+$alert-danger-border: 1px solid #e74c3c;
+
+$td-border-bottom: 1px solid #E1E1E1;
+
+/// Cards
+$card-shift: -2px;
+$card-active-border: #8A8A8A;
+$card-border: #E1E1E1;
+$card-shadow: #E1E1E1;
+$card-anchor-color: #757575;

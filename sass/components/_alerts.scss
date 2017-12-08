@@ -1,0 +1,29 @@
+/* = Alerts
+ ------------------------------------------------------------- */
+
+.alert {
+  width: 100%;
+  border-radius: $border-radius;
+  border: $alert-border;
+  color: $alert-font-color;
+  background-color: $alert-background-color;
+  padding: 10px 15px;
+}
+
+.alert.alert-primary {
+  border: $alert-primary-border;
+  color: $alert-primary-font-color;
+  background-color: $alert-primary-background-color;
+}
+
+.alert.alert-success {
+  border: $alert-success-border;
+  color: $alert-success-font-color;
+  background-color: $alert-success-background-color;
+}
+
+.alert.alert-danger {
+  border: $alert-danger-border;
+  color: $alert-danger-font-color;
+  background-color: $alert-danger-background-color;
+}

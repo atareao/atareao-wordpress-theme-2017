@@ -203,8 +203,8 @@ function atareao_theme_v2_get_first_image_from_post($post_id, $width, $height) {
 function atareao_theme_v2_posted_on_sv(){
     $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
     $time_string_publicado = sprintf( $time_string,
-        esc_attr( get_the_date( 'c' ) ),
-        esc_html( get_the_date('j \d\e F \d\e Y') )
+        esc_attr( get_the_modified_date( 'c' ) ),
+        esc_html( get_the_modified_date('j \d\e F \d\e Y') )
     );
     $count = atareao_theme_v2_getPostViews_short();
     if($count > 0){
@@ -277,6 +277,12 @@ function atareao_theme_v2_getPostViews_short(){
         delete_post_meta($postID, $count_key);
         add_post_meta($postID, $count_key, '0');
         $count = 0;
+    }elseif (($count > 0) &&($count < 1000000)){
+        $count = round($count /1000,1).'K';
+    }elseif (($count > 999999) &&($count < 1000000000)){
+        $count = round($count /1000000,1).'M';
+    }else{
+        $count = round($count /1000000000,1).'T';
     }
     return $count;
 }

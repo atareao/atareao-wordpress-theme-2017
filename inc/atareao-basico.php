@@ -67,7 +67,7 @@ function disable_embeds_init() {
     remove_action('wp_head', 'wp_oembed_add_host_js');
 }
 
-add_action('after_setup_theme', 'atareao_theme_v2_footer_enqueue_scripts');
+//add_action('after_setup_theme', 'atareao_theme_v2_footer_enqueue_scripts');
 function atareao_theme_v2_footer_enqueue_scripts() {
     remove_action('wp_head', 'wp_print_scripts');
     remove_action('wp_head', 'wp_print_head_scripts', 9);

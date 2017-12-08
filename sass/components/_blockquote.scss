@@ -1,0 +1,36 @@
+/* = Blockquote
+ ------------------------------------------------------------- */
+
+blockquote{
+  padding: 20px 20px 20px 40px;
+  margin: 20px 40px 10px 15px;
+  position: relative;
+  border-left: 15px solid $link-color;
+  border-right: 2px solid $link-color;
+}
+blockquote::before{
+  content: "\201C";
+  
+  /*Font*/
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+  
+  /*Positioning*/
+  position: absolute;
+  left: 10px;
+  top: 0px;
+}
+
+blockquote::after{
+  /*Reset to make sure*/
+  content: "";
+}
+
+blockquote a{
+  text-decoration: none;
+  background: #eee;
+  cursor: pointer;
+  padding: 3px;
+}

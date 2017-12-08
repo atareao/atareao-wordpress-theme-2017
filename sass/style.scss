@@ -1,0 +1,65 @@
+/*
+Theme Name: atareao_201709
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: atareao_201709
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+atareao_201709 is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+------------------------------------------------------------- */
+@charset 'UTF-8';
+
+// 1. Configuration and helpers
+@import
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins';
+
+// 2. Bas@extend %xs-four;e stuff
+@import
+  'base/base',
+  'base/fonts',
+  'base/typography',
+  'base/helpers';
+
+// 3. Layout-related sections
+@import
+  'layout/grid';
+
+// 4. Components
+@import
+//  'components/alerts',
+  'components/blockquote',
+  'components/buttons',
+  'components/cards',
+  'components/code',
+  'components/cookies',
+  'components/internal-menu',
+  'components/disqus',
+  'components/forms',
+  'components/lists',
+  'components/pagination',
+  'components/spacing',
+  'components/tables',
+  'components/icons',
+  'components/media-queries';
+
+// 5. Page-specific styles
+@import
+  'pages/default',
+  'pages/extend';
+
+// 6. Vendors
+@import
+  'vendors/featherlight';
+
+// 7. Themes

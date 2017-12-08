@@ -1,0 +1,133 @@
+/* = Forms
+ ------------------------------------------------------------- */
+
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  text-indent: 2rem;
+  width:100%;
+  color: $form-font-color;
+  background-color: $form-background-color;
+  padding: 0.94rem 0.25rem;
+  margin-bottom: 0.625rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: $form-border;
+}
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  height: 120px;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  background-color: $form-background-color-focus;
+  box-shadow: none;
+  border: $form-border-focus;
+  color: $form-font-color-focus;
+  outline: none;
+}
+
+.has-error,
+.has-error:focus {
+  border: $form-border-enter-error !important;
+  outline: 0;
+}
+
+.has-success,
+.has-success:focus {
+  border: $form-border-enter-success !important;
+  outline: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+}
+
+label > .label-body {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+.select{
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  color:#3c3c3c;
+  background-color: #fbfbfb;
+  margin-bottom: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid #aaaaaa;
+}
+select{
+  font-size: 18px;
+  font-weight: 400;
+  font-family:'open_sansregular';
+  width: 100%;
+  padding: 15px 4px;
+  margin-right: 7px;
+  border: none;
+  background-color: #fbfbfb;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom: 0;
+}
+.select__arrow {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: #7b7b7b transparent transparent transparent;
+}

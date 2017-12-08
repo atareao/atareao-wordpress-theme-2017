@@ -1,0 +1,203 @@
+# Copyright (C) 2017 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: _s 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2016-12-23 16:00+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-11-23 09:52+0100\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "¡Ups! No he encontrado la página que buscas. Lo siento."
+
+#: 404.php:21
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+"Parece que no hay nada aquí de lo que estás buscando. A lo mejor, prefieres "
+"mirar en alguno de los enlaces que tienes un poco mas abajo o quizá "
+"¿prefieras realizar una nueva búsqueda?"
+
+#: 404.php:30
+msgid "Most Used Categories"
+msgstr "Categorías mas utilizadas"
+
+#. translators: %1$s: smiley
+#: 404.php:47
+msgid "Try looking in the monthly archives. %1$s"
+msgstr "Intenta buscando en el archivo mensual. %1$s"
+
+#. translators: 1: title.
+#: comments.php:34
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr "Un comentario en &ldquo;%1$s&rdquo;"
+
+#: comments.php:67
+msgid "Comments are closed."
+msgstr "Los comentarios están cerrados."
+
+#: footer.php:18
+msgid "https://wordpress.org/"
+msgstr "https://wordpress.org/"
+
+#. translators: %s: CMS name, i.e. WordPress.
+#: footer.php:20
+msgid "Proudly powered by %s"
+msgstr "Funcionando con orgullo gracias a %s"
+
+#. translators: 1: Theme name, 2: Theme author.
+#: footer.php:25
+msgid "Theme: %1$s by %2$s."
+msgstr "Tema: %1$s por %2$s."
+
+#: functions.php:47
+msgid "Primary"
+msgstr "Principal"
+
+#: functions.php:105
+msgid "Sidebar"
+msgstr "Barra lateral"
+
+#: functions.php:107
+msgid "Add widgets here."
+msgstr "Añade tus widgets aquí."
+
+#: header.php:24
+msgid "Skip to content"
+msgstr "Salta al contenido"
+
+#: header.php:45
+msgid "Primary Menu"
+msgstr "Menú principal"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:52
+msgid ", "
+msgstr ", "
+
+#. translators: 1: list of categories.
+#: inc/template-tags.php:55
+msgid "Posted in %1$s"
+msgstr "Publicado en %1$s"
+
+#. translators: 1: list of tags.
+#: inc/template-tags.php:62
+msgid "Tagged %1$s"
+msgstr "Etiquetado %1$s"
+
+#. translators: %s: post title
+#: inc/template-tags.php:72
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr "Deja un comentario <span class=\"screen-reader-text\">en %s</span>"
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: inc/template-tags.php:89 template-parts/content-page.php:35
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "Editar  <span class=\"screen-reader-text\">%s</span>"
+
+#. translators: %s: search query.
+#: search.php:21
+msgid "Search Results for: %s"
+msgstr "Resultados encontrados para: %s"
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "No he encontrado nada de lo que buscas"
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content-none.php:25
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"¿Preparado para publicar tu primer artículo?  <a href=\"%1$s\">Empieza por "
+"aquí</a>."
+
+#: template-parts/content-none.php:38
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Lo siento, pero parece que no hay nada que case con lo que estás buscando. "
+"Por favor, intentalo de nuevo, utilizando otras palabras."
+
+#: template-parts/content-none.php:44
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Parece que no hay nada parecido a lo que estás buscando. Quizás, realizando "
+"una nueva búsqueda pueda ayudar."
+
+#: template-parts/content-page.php:22 template-parts/content.php:45
+msgid "Pages:"
+msgstr "Páginas:"
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content.php:34
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Continua leyendo <span class=\"screen-reader-text\">\"%s\"</span>"
+
+#. Theme Name of the plugin/theme
+msgid "_s"
+msgstr "_s"
+
+#. Theme URI of the plugin/theme
+msgid "http://underscores.me/"
+msgstr "http://underscores.me/"
+
+#. Description of the plugin/theme
+msgid ""
+"Hi. I'm a starter theme called <code>_s</code>, or <em>underscores</em>, if "
+"you like. I'm a theme meant for hacking so don't use me as a <em>Parent "
+"Theme</em>. Instead try turning me into the next, most awesome, WordPress "
+"theme out there. That's what I'm here for."
+msgstr ""
+"Hola. Soy un tema inicial llamado <code>_s</code>, o <em>underscores</em>, "
+"si lo prefieres. Soy un tema pensado para ser hackeado, por favor no me "
+"utilices como <em>Tema Padre</em>. En lugar de esto, intenta convertirme en "
+"el próximo, y mas increíble, tema de WordPress que nunca se haya visto "
+"antes. Para eso es para lo que he nacido."
+
+#. Author of the plugin/theme
+msgid "Automattic"
+msgstr "Automattic"
+
+#. Author URI of the plugin/theme
+msgid "http://automattic.com/"
+msgstr "http://automattic.com/"
+
+#. translators: 1: comment count number, 2: title.
+#: comments.php:40
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s comentario en &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s comentarios en &ldquo;%2$s&rdquo;"
+
+#. translators: %s: post date.
+#: inc/template-tags.php:29
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr "Publicado en %s"
+
+#. translators: %s: post author.
+#: inc/template-tags.php:35
+msgctxt "post author"
+msgid "by %s"
+msgstr "por %s"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:59
+msgctxt "list item separator"
+msgid ", "
+msgstr ", "

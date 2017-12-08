@@ -1,0 +1,32 @@
+/* = Code
+ ------------------------------------------------------------- */
+
+code {
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.2rem;
+  font-family:monospace;
+  white-space: nowrap;
+  background: $code-background;
+  border: $code-border;
+  border-radius: $border-radius;
+}
+
+pre{
+    background:#300a24;
+    background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAZCAMAAADHTrRNAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABLUExURVhWTVBPR09OR0dGQFhXTkZFP0VEP1dVTU9NRllXTj8+OUhHQUA/OlJQSUpIQlRSSlNRSktJQ1VTS0NBPEJBPExKRERCPWBeVE5MRWexdW0AAAAtSURBVAjXBcEJAkAgAACwUVSu5P7/S22iV0FyqHarTi/73JrNLBiMHqfLYvoBG8wBLYKU9fwAAAAASUVORK5CYII=');
+    background-repeat:repeat-x;
+    font-family:monospace;
+    font-size:1.15rem;
+    color:white;
+    line-height:1.3rem;
+    margin-bottom:1.6em;
+    max-width:100%;
+    overflow:auto;
+    padding:2rem 1rem 1rem 1rem;
+    -webkit-border-top-left-radius:10px;
+    -webkit-border-top-right-radius:10px;
+    -moz-border-radius-topleft:10px;
+    -moz-border-radius-topright:10px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px
+}

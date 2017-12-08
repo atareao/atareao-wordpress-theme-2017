@@ -1,0 +1,52 @@
+/* = Buttons
+ ------------------------------------------------------------- */
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    cursor: pointer;
+    border-color: transparent;
+    background-color: $button-background-color;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  filter: invert(100%);
+  //background-color: $button-background-color-enter;
+}
+
+
+.button:active,
+button:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
+  background-color: $button-background-color-active;
+}
+
+.button:disabled,
+.button:disabled:hover,
+button[disabled],
+.button[disabled],
+input[type="submit"][disabled],
+input[type="reset"][disabled],
+input[type="button"][disabled] {
+  background-color: $button-background-color-disabled;
+  cursor: not-allowed;
+}

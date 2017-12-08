@@ -1,0 +1,98 @@
+/* = Grid
+ ------------------------------------------------------------- */
+
+%container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  max-width: $container-width;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+}
+
+%container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+}
+
+%row {
+  margin-left: -1 * $gutter / 2;
+  margin-right: -1 * $gutter / 2;
+}
+
+%row::before,
+%row::after {
+  content: ' ';
+  display: table;
+}
+
+%row::after {
+  clear: both;
+}
+
+%columns {
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding: $gutter / 2;
+  //padding-right: $gutter / 2;
+}
+
+$list: one two three four five six seven eight nine ten eleven twelve;
+$columns:(
+  1: one,
+  2: two,
+  3: three,
+  4: four,
+  5: five,
+  6: six,
+  7: seven,
+  8: eight,
+  9: nine,
+  10: ten,
+  11: eleven,
+  12: twelve);
+
+@for $i from 1 to ($total-columns + 1){
+  %xs-#{map-get($columns, $i)}%columns {width: $column-width * $i;}
+}
+
+[class*='xs-']%columns ~ [class*='xs-']%columns {
+  margin-top: 0;
+}
+
+@include screen-respond-to(small){
+  %columns ~ %columns {
+    margin-top: 0;
+  }
+  @for $i from 1 to ($total-columns + 1){
+    %#{map-get($columns, $i)}%columns {width: $column-width * $i;}
+    %offset-by-#{map-get($columns, $i)}%columns {margin-left: $column-width * $i;}
+    %sm-#{map-get($columns, $i)}%columns {width: $column-width * $i;}
+    %sm-offset-by-zero%columns {margin-left: 0;}
+    %sm-offset-by-#{map-get($columns, $i)}%columns {margin-left: $column-width * $i;}
+  }
+  %sm-offset-by-medium%columns {margin-left: $column-width / 2;}
+  %sm-one-of-three%columns{width:(100% / 3);}
+}
+@include screen-respond-to(medium){
+  @for $i from 1 to ($total-columns + 1){
+    %md-#{map-get($columns, $i)}%columns {width: $column-width * $i;}
+    %md-offset-by-zero%columns {margin-left: 0;}
+    %md-offset-by-#{map-get($columns, $i)}%columns {margin-left: $column-width * $i;}
+  }
+  %md-one-of-three%columns{width:(100% / 3);}
+  %md-offset-by-medium%columns {margin-left: $column-width / 2;}
+}
+@include screen-respond-to(large){
+  @for $i from 1 to ($total-columns + 1){
+    %lg-#{map-get($columns, $i)}%columns {width: $column-width * $i;}
+    %lg-offset-by-zero%columns {margin-left: 0;}
+    %lg-offset-by-#{map-get($columns, $i)}%columns {margin-left: $column-width * $i;}
+  }
+  %lg-one-of-three%columns{width:(100% / 3);}
+  %lg-offset-by-medium%columns {margin-left: $column-width / 2;}
+}

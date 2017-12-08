@@ -16,8 +16,36 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<?php wp_enqueue_script("jquery"); ?>
+	<?php
+	$description = '';
+	if (is_page('inicio')){
+		$description = 'Linux para legos.';
+	}
+	if ($description != ''){
+		echo '<meta name="description" content="'.$description.'"/>
+	<meta property="og:description" content="'.$description.'"/>
+	<meta name="twitter:description" content="'.$description.'"/>';
+	}
+	?>
 	<?php wp_head(); ?>
+<?php if ( ! is_user_logged_in () ) { ?>
+<!-- Google Analytics On. -->
+<script type="text/javascript">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-11534648-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('require', 'linkid', 'linkid.js');
+	__gaTracker('send','pageview');
+
+</script>
+<?php } else {
+echo '<!-- Google Analytics Off. -->';
+}?>
 </head>
 
 <body <?php body_class(); ?>>

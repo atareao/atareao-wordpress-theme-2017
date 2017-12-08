@@ -13,7 +13,6 @@ get_header(); ?>
 		<main id="main" class="site-main">
 
 		<?php
-		echo "1234".get_template_directory_uri();
         if ((get_post_type()=='post')||(get_post_type()=='software')){
             category_menu();
             software_menu();

@@ -12,15 +12,18 @@ if ( ! function_exists( 'atareao_201709_posted_on' ) ) :
 	 * Prints HTML with meta information for the current post-date/time and author.
 	 */
 	function atareao_201709_posted_on() {
-	    $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	    $time_string = '<time itemprop="datePublished" content="%3$s" class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	    $time_string_publicado = sprintf( $time_string,
 	        esc_attr( get_the_date( 'c' ) ),
-	        esc_html( get_the_date('l\, j \d\e F \d\e Y') )
+	        esc_html( get_the_date('l\, j \d\e F \d\e Y') ),
+	        esc_html( get_the_date('Y-m-d') )
 	    );
 	    if (strtotime(get_the_modified_date('Y-m-d')) > strtotime(get_the_date('Y-m-d'))){
+		    $time_string = '<time itemprop="dateModified" content="%3$s" class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	        $time_string_actualizado = sprintf( $time_string,
 	            esc_attr( get_the_modified_date( 'c' ) ),
-	            esc_html( get_the_modified_date('l\, j \d\e F \d\e Y') )
+	            esc_html( get_the_modified_date('l\, j \d\e F \d\e Y') ),
+	            esc_html( get_the_modified_date('Y-m-d') )
 	        );
 	        printf( __( '<i><span class="posted-on">Publicado el %1$s. </span><strong><span class="posted-on">Actualizado el %2$s</span></strong><span class="byline"> por %3$s</span>. %4$s</i>', 'atareao_theme_v2' ),
 	            sprintf( '<a href="%1$s" rel="bookmark">%2$s</a>',
@@ -31,7 +34,7 @@ if ( ! function_exists( 'atareao_201709_posted_on' ) ) :
 	                esc_url( get_permalink() ),
 	                $time_string_actualizado
 	            ),
-	            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
+	            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s"><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">%2$s</span></span></a></span>',
 	                esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 	                esc_html( get_the_author() )
 	            ),
@@ -44,7 +47,7 @@ if ( ! function_exists( 'atareao_201709_posted_on' ) ) :
 	                esc_url( get_permalink() ),
 	                $time_string_publicado
 	            ),
-	            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
+	            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s"><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">%2$s</span></span></a></span>',
 	                esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 	                esc_html( get_the_author() )
 	            ),
@@ -53,8 +56,8 @@ if ( ! function_exists( 'atareao_201709_posted_on' ) ) :
 	    }
 	    if ( is_single() ) {
 	        echo ' <a href="'.get_the_permalink().'#disqus_thread">Deja un comentario</a>';
-	        if (time() - max(strtotime(get_the_date('Y-m-d')), strtotime(get_the_modified_date('Y-m-d'))) > (365 * 24 * 3600)) {
-				echo "<div class='information danger'><p><span class='icono24 atencion'></span>Este artículo se publicó hace <strong>mas de un año</strong>. Ten en cuenta que con las nuevas versiones y las actualizaciones constantes de software, es fácil, que este <strong>artículo</strong> esté <strong>desactualizado</strong>. Si estás interesado en que lo <strong>actualice</strong>, envíame un correo a través del <a href=''>formulario de contacto</a>.</p></div>";
+	        if (time() - max(strtotime(get_the_date('Y-m-d')), strtotime(get_the_modified_date('Y-m-d'))) > (730 * 24 * 3600)) {
+				echo "<div class='information danger'><p><span class='icono24 atencion-icon'></span>Este artículo se publicó hace <strong>mas de dos años</strong>. Ten en cuenta que con las nuevas versiones y las actualizaciones constantes de software, es fácil, que este <strong>artículo</strong> esté <strong>desactualizado</strong>. Si estás interesado en que lo <strong>actualice</strong>, envíame un correo a través del <a href=''>formulario de contacto</a>.</p></div>";
 	    	}
 	    }
 	}

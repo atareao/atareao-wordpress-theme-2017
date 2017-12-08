@@ -28,6 +28,7 @@ get_header(); ?>
 
 			<?php
 			/* Start the Loop */
+			$index = 0;
 			while ( have_posts() ) : the_post();
 
 				/*
@@ -35,8 +36,14 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
+				if($index & 1){
+					//echo '<div class=row>';
+					echo '<div class="articles">';
+				}
 				get_template_part( 'template-parts/content', get_post_format() );
-
+				if(!($index & 1)){
+					echo '</div>';
+				}
 			endwhile;
 
 			atareao_theme_pagination();

@@ -29,7 +29,7 @@ get_header(); ?>
 			endif;
 			/* Start the Loop */
 			$index = 0;
-			echo '<div class="articles">';
+			//echo '<div class="articles">';
 			while ( have_posts() ) : the_post();
 				$index++;
 				/*
@@ -39,13 +39,14 @@ get_header(); ?>
 				 */
 				if($index & 1){
 					//echo '<div class=row>';
+					echo '<div class="articles">';
 				}
 				get_template_part( 'template-parts/content', get_post_format() );
 				if(!($index & 1)){
-					//echo '</div>';
+					echo '</div>';
 				}
 			endwhile;
-			echo '</div>';
+			//echo '</div>';
 			//echo '<div class="row">';
 			atareao_theme_pagination();
 			//echo '</div>';
