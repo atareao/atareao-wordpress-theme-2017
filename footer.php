@@ -17,8 +17,8 @@
 			<div class="license">
                 <ul>
                     <li><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><div id="atareao_license"></div></a></li>
-                    <li>2010 - 2017</li>
-                    <li><a rel="author" href="https://plus.google.com/+LorenzoCarbonell">Lorenzo Carbonell</a></li>
+                    <li>2010 - 2018</li>
+                    <li><a rel="author" href="https://lorenzocarbonell.com">Lorenzo Carbonell</a></li>
                 </ul>
             </div>
 

@@ -23,7 +23,6 @@ function disable_emojicons_tinymce( $plugins ) {
     return array();
   }
 }
-
 add_filter( 'emoji_svg_url', '__return_false' );
 
 function remove_cssjs_ver( $src ) {
@@ -36,8 +35,8 @@ function remove_cssjs_ver( $src ) {
     }
     return $src;
 }
-add_filter( 'style_loader_src', 'remove_cssjs_ver', 10, 2 );
-add_filter( 'script_loader_src', 'remove_cssjs_ver', 10, 2 );
+//add_filter( 'style_loader_src', 'remove_cssjs_ver', 10, 2 );
+//add_filter( 'script_loader_src', 'remove_cssjs_ver', 10, 2 );
 
 /**
  * Remove jQuery migrate script
@@ -129,6 +128,5 @@ function give_linked_images_class($html, $id, $caption, $title, $align, $url, $s
   */ 
   return $html;
 }
-
 add_filter('image_send_to_editor', 'give_linked_images_class', 10, 8);
 

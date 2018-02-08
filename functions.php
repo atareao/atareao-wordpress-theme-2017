@@ -170,6 +170,7 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/atareao-basico.php';
 
 require get_template_directory() . '/inc/atareao-extras.php';
+//require get_template_directory() . '/inc/seo.php';
 
 /**
  * Load Jetpack compatibility file.
