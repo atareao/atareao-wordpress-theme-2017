@@ -313,21 +313,29 @@ function atareao_theme_v2_getPostViews(){
 }
 add_action('template_redirect', 'atareao_theme_v2_setPostViews');
 function atareao_theme_v2_setPostViews() {
-    $user = wp_get_current_user();
-    $allowed_roles = array('editor', 'administrator', 'author');
-    if(!array_intersect($allowed_roles, $user->roles)){
-        $postID = get_the_ID();
-        $count_key = 'post_views_count';
-        $count = get_post_meta($postID, $count_key, true);
-        if($count==''){
-            $count = 0;
-            delete_post_meta($postID, $count_key);
-            add_post_meta($postID, $count_key, '0');
-        }else{
-            $count++;
-            update_post_meta($postID, $count_key, $count);
+    if(!bot_detected()){
+        $user = wp_get_current_user();
+        $allowed_roles = array('editor', 'administrator', 'author');
+        if(!array_intersect($allowed_roles, $user->roles)){
+            $postID = get_the_ID();
+            $count_key = 'post_views_count';
+            $count = get_post_meta($postID, $count_key, true);
+            if($count==''){
+                $count = 0;
+                delete_post_meta($postID, $count_key);
+                add_post_meta($postID, $count_key, '0');
+            }else{
+                $count++;
+                update_post_meta($postID, $count_key, $count);
+            }
         }
     }
+}
+function bot_detected() {
+  return (
+    isset($_SERVER['HTTP_USER_AGENT'])
+    && preg_match('/bot|crawl|slurp|spider|mediapartners/i', $_SERVER['HTTP_USER_AGENT'])
+  );
 }
 function social_media_links(){
     $url = get_permalink();

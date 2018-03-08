@@ -130,8 +130,8 @@
 #call-to-action{
   @extend %row;
   @extend %card-2;
-  padding: 20px;
-  margin: $gutter;
+  padding: 10px;
+  margin: $gutter/2;
 }
 #call-to-action .main-logo{
   @extend .for-desktop;
