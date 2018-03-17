@@ -30,3 +30,8 @@ pre{
     border-top-left-radius:10px;
     border-top-right-radius:10px
 }
+
+pre > code{
+  background: transparent;
+  border: transparent;
+}
